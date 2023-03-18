@@ -81,24 +81,26 @@ const CreatePostScreen = () => {
           <Message variant='danger'>{error}</Message>
         ) : (
             <Form onSubmit={submitHandler} className="flex items-center justify-center flex-col">
-                <Form.Group controlId='title'>
+                <Form.Group controlId='title' className='w-[30rem]'>
                     <Form.Label>Title:</Form.Label>
                     <Form.Control type='text' value={title}  placeholder="Title" onChange={(e) => setTitle(e.target.value)} className="mb-4"/>
                 </Form.Group>
-                <Form.Group controlId='author'>
+                <Form.Group controlId='author' className='w-[30rem]'>
                     <Form.Label>Author:</Form.Label>
                     <Form.Control type='text' value={author}  placeholder="Author" onChange={(e) => setAuthor(e.target.value)} className="mb-4"/>
                 </Form.Group>
-                <Form.Group controlId='date'>
+                <Form.Group controlId='date' className='w-[30rem]'>
                     <Form.Label>Date:</Form.Label>
                     <Form.Control type='text' value={date}  placeholder="Date" onChange={(e) => setDate(e.target.value)} className="mb-4"/>
                 </Form.Group>
-                <Form.Group controlId='description'>
+                <Form.Group controlId='description' className='w-[30rem]'>
                     <Form.Label>Post:</Form.Label>
-                    <Form.Control type='text' value={description} placeholder="Write post here" onChange={(e) => setDescription(e.target.value)} className="mb-4"/>
+                    <Form.Control type='text' as="textarea" rows={5} value={description} placeholder="Write post here" onChange={(e) => setDescription(e.target.value)} className="mb-4"/>
                 </Form.Group>
-                    <Button type='submit' className="w-[8rem] mb-2">&#9757; Save Post</Button>
+                <Form.Group className='flex items-center justify-between w-[20rem]'>
+                    <Button type='submit' className="w-[8rem]">&#9757; Save Post</Button>
                     <Button className="w-[8rem]" variant="warning" onClick={() => navigate(-1)}>&larr; Go Back</Button>
+                </Form.Group>
             </Form>
            )} 
         </div>

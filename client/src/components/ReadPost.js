@@ -20,10 +20,10 @@ const ReadPost = () => {
         <div>
            
    
-           <div className="p-4 w-3/4 flex items-start justify-center flex-col">
+           <div className="p-4 w-full h-[100vh] flex items-center justify-center flex-col">
                <h2 className="text-[2rem] font-semibold mb-2">{post.title}</h2>
                <h4 className="mb-4 font-light text-[1rem]"><span className="underline">Posted by:</span> <span className="font-semibold">{post.author}</span> on <span className="font-semibold">{post.date}</span></h4>
-               <p className="w-full">{post.description}</p>   
+               <p>{post.description}</p>   
 
                <LinkContainer to={`/`}>
                     <Button className=''>

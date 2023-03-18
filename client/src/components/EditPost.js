@@ -68,24 +68,26 @@ const EditPost = () => {
           <Message variant='danger'>{error}</Message>
         ) : (
             <Form onSubmit={submitHandler} className="flex items-center justify-center flex-col">
-                <Form.Group>
+                <Form.Group className='w-[30rem]'>
                     <Form.Label>Title:</Form.Label>
                     <Form.Control type='text' name="" value={title} placeholder="Title" onChange={(e) => setTitle(e.target.value)} className="mb-4"/>
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className='w-[30rem]'>
                     <Form.Label>Author:</Form.Label>
                     <Form.Control type='text' name="" value={author} placeholder="Author" onChange={(e) => setAuthor(e.target.value)} className="mb-4"/>
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className='w-[30rem]'>
                     <Form.Label>Date:</Form.Label>
                     <Form.Control type='text' name="" value={date} placeholder="Date" onChange={(e) => setDate(e.target.value)} className="mb-4"/>
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className='w-[30rem]'>
                     <Form.Label>Post:</Form.Label>
-                    <Form.Control type='text' name="" value={description} placeholder="Write post here" onChange={(e) => setDescription(e.target.value)} className="mb-4"/>
+                    <Form.Control type='text' as="textarea" rows={5} name="" value={description} placeholder="Write post here" onChange={(e) => setDescription(e.target.value)} className="mb-4"/>
                 </Form.Group>
-                    <Button type='submit' className="w-[8rem] mb-2">&#9757; Save Post</Button>
+                <Form.Group className='flex items-center justify-between w-[20rem]'>
+                    <Button type='submit' className="w-[8rem]">&#9757; Save Post</Button>
                     <Button className="w-[8rem]" variant="warning" onClick={() => navigate(-1)}>&larr; Go Back</Button>
+                </Form.Group>
             </Form>
         )}
         </div>

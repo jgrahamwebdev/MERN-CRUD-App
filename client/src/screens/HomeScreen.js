@@ -44,12 +44,15 @@ const HomeScreen = () => {
 
     return (
         <div className="w-full h-[100vh] flex items-center justify-center flex-col">
-            <h1>Home Screen</h1>
-            {error ? (
-          <Message variant='danger'>{error}</Message>
-        ) : (
+            <h1 className='mb-4'>Home Screen</h1>
+            <Button onClick={createPostHandler} variant='success' className='mb-4'>
+                    <i className='fas fa-add'></i> Add a Post!
+            </Button>
+                {error ? (
+                    <Message variant='danger'>{error}</Message>
+                ) : (
 
-                 <Table striped bordered hover responsive className='w-1/2'>
+                 <Table striped bordered hover responsive>
                  <thead>
                  <tr>
                      <th>DATE</th>
@@ -83,12 +86,8 @@ const HomeScreen = () => {
                     ))}
                  </tbody>
                  
-             </Table>
-            )}
-                <Button onClick={createPostHandler} variant='success'>
-                    Create new Post!
-                </Button>
-          
+                </Table>
+                )}
         </div>
     )
 }

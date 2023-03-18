@@ -4,7 +4,8 @@ import mongoose from "mongoose"
 const postSchema = mongoose.Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        minlength: 3
     },
     author: {
         type: String,
@@ -18,7 +19,7 @@ const postSchema = mongoose.Schema({
         type: String,
         required: true
     }
-}, { timesttamps: true })
+}, { timestamps: true })
 
 const Post = mongoose.model("Post", postSchema);
 
