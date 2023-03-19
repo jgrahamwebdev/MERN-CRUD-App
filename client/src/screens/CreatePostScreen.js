@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { listPostDetails, updatePost } from '../actions/postActions'
+import { deletePost, listPostDetails, updatePost } from '../actions/postActions'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 
@@ -22,26 +22,15 @@ const CreatePostScreen = () => {
     const postDetails = useSelector((state) => state.postDetails)
     const { loading, error, post } = postDetails
 
+    const postDelete = useSelector(state => state.postDelete)
+    const { loading: loadingDelete, error: errorDelete, success: successDelete } = postDelete
+
     const postUpdate = useSelector((state) => state.postUpdate)
     const {
       loading: loadingUpdate,
       error: errorUpdate,
       success: successUpdate,
     } = postUpdate
-
-    // useEffect(() => {  
-    //     if(successUpdate) {
-    //       dispatch({ type: 'POST_UPDATE_RESET' })
-    //       dispatch({type: 'POST_DETAIL_RESET'})
-    //       navigate('/')
-    //     } else {
-    //         setTitle(post.title)
-    //         setAuthor(post.author)
-    //         setDate(post.date)
-    //         setDescription(post.description)
-    //     }
-        
-    //   }, [dispatch, navigate, post, successUpdate])
 
     useEffect(() => {
         if (successUpdate) {
@@ -69,6 +58,11 @@ const CreatePostScreen = () => {
             description,
         }))
     }
+
+    const deleteHandler = (id) => {
+         dispatch(deletePost(id))
+
+  }
 
     return (
         <div className="w-full h-[100vh] flex items-center justify-center flex-col">
@@ -99,7 +93,7 @@ const CreatePostScreen = () => {
                 </Form.Group>
                 <Form.Group className='flex items-center justify-between w-[20rem]'>
                     <Button type='submit' className="w-[8rem]">&#9757; Save Post</Button>
-                    <Button className="w-[8rem]" variant="warning" onClick={() => navigate(-1)}>&larr; Go Back</Button>
+                    <Button className="w-[8rem]" variant="warning" onClick={() => {navigate(-1); deleteHandler(post._id);}}>&larr; Go Back</Button>
                 </Form.Group>
             </Form>
            )} 
